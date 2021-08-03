@@ -512,7 +512,7 @@ module.exports = {
 						fields = fields.split(" ");
 
 					// Authorize the requested fields
-					const authFields = this.authorizeFields(fields);
+					const authFields = this.settings.authorizeFields ? this.settings.authorizeFields(json, fields) : this.authorizeFields(fields);
 
 					return json.map(item => this.filterFields(item, authFields));
 				})
